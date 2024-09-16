@@ -2,9 +2,10 @@ package com.crm.service;
 
 import com.crm.model.Lead;
 import com.crm.repository.LeadRepository;
-
+import javax.ejb.Stateless;
 import java.util.List;
 
+@Stateless
 public class LeadService {
     private LeadRepository repository = new LeadRepository();
 

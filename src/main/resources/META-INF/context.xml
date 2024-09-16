@@ -1,0 +1,9 @@
+<Context>
+    <Resource name="jdbc/YourDB"
+        auth="Container"
+        type="javax.sql.DataSource"
+        maxTotal="20"
+        maxIdle="10"
+        driverClassName="org.sqlite.JDBC"
+        url="jdbc:sqlite:/path/to/your/database.db" />
+</Context>
