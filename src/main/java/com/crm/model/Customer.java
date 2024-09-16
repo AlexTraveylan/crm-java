@@ -1,4 +1,3 @@
-
 package com.crm.model;
 
 import javax.persistence.*;

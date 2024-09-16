@@ -1,31 +1,36 @@
 package com.crm.service;
 
-import com.crm.model.Customer;
-import com.crm.repository.CustomerRepository;
-import javax.ejb.Stateless;
 import java.util.List;
 
-@Stateless
-public class CustomerService {
-    private CustomerRepository repository = new CustomerRepository();
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-    public void addCustomer(Customer customer) {
-        repository.addCustomer(customer);
+import com.crm.model.Customer;
+import com.crm.repository.CustomerRepository;
+
+@Service
+public class CustomerService {
+
+    private CustomerRepository customerRepository;
+
+    @Autowired
+    public void CustomerServiceImpl(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
+
+    public Customer createCustomer(Customer customer) {
+        return customerRepository.save(customer);
+    }
+
+    public Customer getCustomerById(Integer id) {
+        return customerRepository.findById(id).orElse(null);
     }
 
     public List<Customer> getAllCustomers() {
-        return repository.getAllCustomers();
+        return customerRepository.findAll();
     }
 
-    public Customer getCustomerById(int id) {
-        return repository.getCustomerById(id);
-    }
-
-    public Customer updateCustomer(Customer customer) {
-        return repository.updateCustomer(customer);
-    }
-
-    public void deleteCustomer(int id) {
-        repository.deleteCustomer(id);
+    public void deleteCustomer(Integer id) {
+        customerRepository.deleteById(id);
     }
 }

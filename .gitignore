@@ -54,3 +54,6 @@ build/
 # Others
 .DS_Store
 *.swp
+
+# Database
+database.db
