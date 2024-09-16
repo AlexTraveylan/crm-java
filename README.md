@@ -28,6 +28,13 @@ Un projet de Gestion de la Relation Client (CRM) développé en Java. Ce projet 
    mvn clean install
    ```
 
+3. Lancez l'application avec Maven :
+
+   Avec Maven :
+   ```sh
+   mvn spring-boot:run
+   ```
+
 ## Tests
 Pour exécuter les tests :
 
