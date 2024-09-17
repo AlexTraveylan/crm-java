@@ -1,6 +1,7 @@
 package com.crm.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -37,6 +38,7 @@ public class LeadController {
 
     // Read (all)
     @GetMapping
+    @Cacheable("leads")
     public ResponseEntity<List<Lead>> getAllleads() {
         List<Lead> leads = leadService.getAllLeads();
         return new ResponseEntity<>(leads, HttpStatus.OK);

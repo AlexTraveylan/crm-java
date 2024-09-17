@@ -1,6 +1,7 @@
 package com.crm.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,6 +31,7 @@ public class CustomerController {
 
     // Read (all)
     @GetMapping
+    @Cacheable("customers")
     public ResponseEntity<List<Customer>> getAllcustomers() {
         List<Customer> customers = customerService.getAllCustomers();
         return new ResponseEntity<>(customers, HttpStatus.OK);

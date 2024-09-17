@@ -1,6 +1,8 @@
 package com.crm.model;
 
 import javax.persistence.Entity;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.*;
 import lombok.Data;
 import javax.persistence.*;
 
@@ -14,12 +16,17 @@ public class Lead {
     private int id;
 
     @Column(name = "contact_name")
+    @NotBlank
+    @Size(max = 100)
     private String contactName;
 
     @Column(name = "company")
+    @NotBlank
+    @Size(max = 100)
     private String company;
 
     @Column(name = "email")
+    @Email
     private String email;
 
     public String toString() {
