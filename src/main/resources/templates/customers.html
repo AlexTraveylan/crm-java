@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="p-6 text-black bg-white">
+    <div class="container mx-auto">
+        <div class="card w-full bg-white shadow-xl">
+            <div class="card-body">
+                <h2 class="card-title text-2xl font-bold mb-4">Create Customer</h2>
+                <form th:action="@{/customers}" th:object="${customer}" method="post" class="space-y-4">
+                    <div class="form-control">
+                        <label for="name" class="label">
+                            <span class="label-text">Name:</span>
+                        </label>
+                        <input type="text" id="name" th:field="*{name}" class="input bg-white input-bordered w-full" />
+                    </div>
+                    <div class="form-control">
+                        <label for="email" class="label">
+                            <span class="label-text">Email:</span>
+                        </label>
+                        <input type="text" id="email" th:field="*{email}"
+                            class="input bg-white input-bordered w-full" />
+                    </div>
+                    <div class="form-control">
+                        <label for="phone" class="label">
+                            <span class="label-text">Phone:</span>
+                        </label>
+                        <input type="text" id="phone" th:field="*{phone}"
+                            class="input bg-white input-bordered w-full" />
+                    </div>
+                    <div class="form-control">
+                        <button type="submit" class="btn btn-primary w-full">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <h1 class="text-2xl font-bold mt-8 mb-4">Customers</h1>
+        <table class="table w-full bg-white shadow-md rounded-lg overflow-hidden">
+            <thead class="bg-gray-200">
+                <tr>
+                    <th class="p-4 text-left">Name</th>
+                    <th class="p-4 text-left">Email</th>
+                    <th class="p-4 text-left">Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="customer : ${customers}" class="hover:bg-gray-100">
+                    <td class="p-4" th:text="${customer.name}">Name</td>
+                    <td class="p-4" th:text="${customer.email}">Email</td>
+                    <td class="p-4" th:text="${customer.phone}">Phone</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
